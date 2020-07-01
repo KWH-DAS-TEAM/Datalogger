@@ -1,0 +1,43 @@
+================================================================================
+=             Welcome to the kwh RPi Data Logger software package              =
+================================================================================
+
+These aliases and functions are available to simplify the use of this software
+
+This is /kwh/config/help.txt and is piped into "more" to stop printing once
+the screen is full. Press enter to navigate down through the list or "q" to exit
+
+config (no arguments): 
+  This displays all of the current config variables and their values
+
+data <optional "starts with" filter>
+  e.g. "data a" will only show the data entries that start with "a"
+
+delconf <key> <optional: 1 to delete all historical records as well>
+
+help (no arguments): 
+  Displays this help information
+
+helpconf (no arguments): 
+  Displays a list of definitions for each config variable
+
+readsms (no arguments): 
+  This will read the sms memory from the SIM card and populate the log file
+  at /kwh/transceive/sms/read.log
+
+reload (no arguments): 
+  This will reload all environment variables, aliases, and functions by
+  sourcing the file /kwh/config/kwh.conf
+
+sendsms <phone #> <A message>: 
+  The message can have spaces. This will send an sms.
+  e.g. sendsms 4252681938 Hi Dave!
+
+setconf <config variable name> <config value>: 
+  This is used to create new config variables or update existing config
+  variables. 
+  e.g. setconf PORT 11002
+
+tx_string <optional "starts with" filter>
+  e.g. "tx_string 2019-01-12 23" will show the tx_string entries from 
+  2019-01-12 hour 23

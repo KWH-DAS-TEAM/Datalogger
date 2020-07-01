@@ -1,0 +1,4 @@
+* * * * * /kwh/transceive/tcp/collect_data.sh >> /kwh/log/cron.log 2>&1
+*/5 * * * * /kwh/transceive/tcp/transmit.sh >> /kwh/log/cron.log 2>&1
+*/2 * * * * /kwh/transceive/sms/smsParse.py >> /kwh/log/cron.log 2>&1
+0 0 1 1,4,7,10 * sudo shutdown -r now

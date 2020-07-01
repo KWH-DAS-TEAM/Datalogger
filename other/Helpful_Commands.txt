@@ -1,0 +1,15 @@
+This lets you find and replace a word or regular expression
+throughout an entire directory, recursively:
+
+grep -lr --exclude-dir=".git" -e "oldword" . | xargs sed -i '' -e 's/oldword/newword/g'
+
+grep searches for text in files recursively in a directory.
+The -l flag for grep tells it to only output file names when it finds a word match.
+The -r flag tells grep to search recursively in the directory, i.e. it will also look in subfolders if applicable.
+--exclude-dir=".git" is optional; it tells grep to ignore files in the .git directory. You can have more than one --exclude-dir flag if you want to exclude multiple folders. Usually you won't want to look in the git folder though, if your folder is being tracked by git. Similarly, you can use the --exclude flag to exclude files with certain patterns in their names, for example --exclude="*\.min\.*" will exclude files with .min. in their names. (You'll commonly want to exclude dependency folders like node_modules as well.)
+-e "oldword" The -e flag for grep says that the following argument is a regular expression and can be omitted if you just want to type in a normal word or phrase. "oldword" is the old word/expression you want to replace.
+The dot (.) tells grep to look in the current directory. You can change that to a directory path, a specific file, or an asterisk (*) if you want to search files in the current directory non-recursively.
+The pipe (|) tells xargs to operate on the output of the grep command.
+xargs tells sed to use the output of grep.
+sed -i modifies text files. It takes an argument (the empty string '' in this case) which is a suffix for the output file; if the empty string is passed (as we are doing here) it will replace the input file.
+-e "s/oldword/newword/g" tells sed to replace every instance of oldword with newword. "s" means replace and "g" means every instance (as opposed to just the first one). oldword is a regular expression. You can omit newword if you just want to delete a word.

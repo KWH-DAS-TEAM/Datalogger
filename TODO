@@ -1,0 +1,38 @@
+Add config to turn temperature data collection off
+
+Add MODBUS serial communication settings to the config
+
+Need to stop using cron for transmit so we can implement TX_INTERVAL
+
+Setup config option to toggle log level permanent vs log overwrite
+
+Finish pulse code to launch configured channels on boot
+
+Consider setting up bi-directional rsync for remote access back door,
+and investigate other backdoor options
+
+Add log cycling service to prevent filling the SD card, but still allow
+simple logging via DEBUG config - make log retention configurable
+Move logs to database and build log request sms that sends compressed database file
+create logdel alias - and sms command to do it remotely.
+
+Consider rsync for sending the data and storing all data in a local 
+graphite/influxdb instance
+
+Figure out server data delay
+
+Create email notification of data stopping, with another notification of it
+restarting, and when restarting send X bytes based on data stopped window
+
+Fix bug in smsParse that throws exception if there is no message to read
+
+Fix bug in simServer that doesn't show last response until next request
+
+Add realtime clock and stop relying so heavily on internet for timestamps
+
+Add sms control for MODBUS config, SQ, and new Pi data
+
+Modularize code to support modularized hardware. E.g. disect RPi
+"ports" (e.g. I2C, SPI, UART, Bitbang other GPIO), into groups
+and write code, for each hardware module, that lets it use different "ports",
+providing the best modularization options we can

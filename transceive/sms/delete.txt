@@ -1,0 +1,4 @@
+AT+CMGF=1
+OK
+AT+CMGD=1,4
+OK

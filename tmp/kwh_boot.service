@@ -1,0 +1,13 @@
+[Unit]
+Description=KWH Boot Service
+After=server.service multi-user.target
+
+[Service]
+Type=simple
+User=pi
+WorkingDirectory=/kwh
+ExecStart=/kwh/boot/boot.sh
+Restart=on-abort
+
+[Install]
+WantedBy=multi-user.target

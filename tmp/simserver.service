@@ -1,0 +1,13 @@
+[Unit]
+Description=KWH Sim Server Service
+After=server.service multi-user.target
+
+[Service]
+Type=simple
+User=pi
+WorkingDirectory=/kwh
+ExecStart=/kwh/transceive/sim_server.py
+Restart=on-abort
+
+[Install]
+WantedBy=multi-user.target

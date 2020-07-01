@@ -1,0 +1,55 @@
+================================================================================
+=             Welcome to the kwh RPi Data Logger software package              =
+================================================================================
+
+This defines the config variables that are used by the RPi Data Logger
+
+This is /kwh/config/config_help.txt piped into "more" to stop printing once
+the screen is full. Press enter to navigate down through the list or "q" to exit
+
+All config variables are used as global environment variables, and should all
+use names that are entirely capitalized.
+
+ADx: Where x represents the analog channel number. This controls
+whether the analog channel is enabled or not. The only permissible values are
+0 and 1, where 0 is disabled and 1 is enabled.
+
+PUx: Where x represents the two digit pulse channel number. This controls
+whether the pulse channel is enabled or not. The only permissible values are
+0 and 1, where 0 is disabled and 1 is enabled.
+
+DOMAIN: This is the domain of the server that the KWH Data Logger RTU will send
+its data to.
+
+PORT: When the RPi sends data to the server domain, it sends it to this port.
+
+SIM_PORT: When the simServer service starts up, it aquires an available port
+starting with 9999 and working up until it finds one that is available. Once
+an available port is selected, it is logged into this global variable so all
+other code knows where to talk to the simServer.
+
+APN: This is the cellular internet provider Access Point Name, and is used
+to request internet access via AT commands. If the APN is unknown, try
+"internet".
+
+ADMPW: This is the administrator password. When reprogramming the KWH Data
+Logger RTU via SMS commands, the command will only be accepted if the correct
+password is provided. The password is also provided to the server to 
+authenticate to privilege to log data.
+
+INQPW: This is the inquiry password. When querying the RPi Data Logger for
+information, responses will only be sent if the correct inquiry password is
+provided.
+
+DEBUG: This controls logging in several of the programs. The higher the number
+the more verbose. Be careful not to leave this enabled, as log files will 
+continuously grow and waste the sd card memory.
+
+STA: This is the Station ID, i.e. the name of the KWH Data Logger RTU as it is
+reported to the server. This ID causes the server to create a new folder in
+the database for this KWH Data Logger RTU. If you use an STA that is already
+in use, your data will collide with theirs and potentially overwrite it.
+
+TX_INTRVL: This is not yet implemented, but is intented to be used for the
+transmit time interval, so that users can implement transmit intervals
+other than 1 minute, which is currently hardcoded.
