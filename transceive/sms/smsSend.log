@@ -1,0 +1,4 @@
+AT+CMGF=1
+OK
+AT+CMGS="4252681938"
+> test
